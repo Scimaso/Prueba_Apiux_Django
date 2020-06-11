@@ -1,0 +1,18 @@
+{% extends 'api/base.html'%}
+
+{% block body %}
+<h2>Autor</h2>
+
+<form action="{% url 'autor_detail' autor.id %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Guardar">
+</form>
+
+<ul>
+    <h2>Libros</h2>
+{% for libro in autor.libro_set.all %}
+    <li>{{libro.nombre}}</li>
+{% endfor %}
+</ul>
+{% endblock %}
